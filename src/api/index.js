@@ -6,6 +6,7 @@ const Emp = 'Employee'
 
 //Department
 export const fetchDepartments = () => axios.get(url + Dep);
+export const createDepartments = (newDep) => axios.post(url + Dep, newDep);
 
 //Employee
 export const fetchEmployee = () => axios.get(url + Emp);

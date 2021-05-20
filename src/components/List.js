@@ -1,21 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import * as api from '../api/index';
 
-const List = ({text, todos, setTodos, todo}) => {
-    const [data, setData] = useState([]);
+const List = ({}) => {
+    const [res, setRes] = useState([]);
     useEffect(()=>{
-        api.fetchDepartments().then(data => {
-            console.log()
-            // text = data.data;
-            setData(data.data);
+        api.fetchDepartments().then(res => {
+            setRes(res.data);
         })
-    },[])
-
-    console.log(data);
+    },[res])
     return (
         <>
             <ul>
-                {data.map(item =>  <li> {item.DepartmentId} - {item.DepartmentName}</li> )}
+                {res.map(item =>  <li> {item.DepartmentId} - {item.DepartmentName}</li> )}
             </ul>
         </>
     )
