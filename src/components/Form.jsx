@@ -8,8 +8,7 @@ const Form = ({
   DepName,
   setDepId,
   setDepName,
-  res,
-  setRes,
+  createText
 }) => {
   const [dep, setDep] = useState([]);
 
@@ -26,7 +25,9 @@ const Form = ({
   const submitTodoHandler = (e) => {
     e.preventDefault();
     setCreateDep = { DepartmentId: parseInt(DepId), DepartmentName: DepName };
-    api.createDepartments(setCreateDep)
+    api.createDepartments(setCreateDep).then(() => {
+      createText(setCreateDep)
+    })
     setDepId("");
     setDepName("")
     console.log(setCreateDep);
@@ -49,10 +50,9 @@ const Form = ({
         placeholder="DepartmentName"
       ></input>
       <button onClick={submitTodoHandler} className="" type="submit">
-        +
+        Submit
       </button>
       <p>{dep}</p>
-      <List res={setRes} />
     </form>
   );
 };
