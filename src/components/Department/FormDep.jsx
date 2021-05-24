@@ -1,18 +1,14 @@
 import React, { useState } from "react";
-import List from "./List";
-import * as api from "../api/index";
+import * as api from "../../api/index";
 
-const Form = ({
+const FormDep = ({
   setCreateDep,
   DepId,
   DepName,
   setDepId,
   setDepName,
-  res,
-  setRes,
+  createText,
 }) => {
-  const [dep, setDep] = useState([]);
-
   const inputTextDepID = (e) => {
     console.log(e.target.value);
     setDepId(e.target.value);
@@ -26,9 +22,11 @@ const Form = ({
   const submitTodoHandler = (e) => {
     e.preventDefault();
     setCreateDep = { DepartmentId: parseInt(DepId), DepartmentName: DepName };
-    api.createDepartments(setCreateDep)
+    api.createDepartments(setCreateDep).then(() => {
+      createText(setCreateDep);
+    });
     setDepId("");
-    setDepName("")
+    setDepName("");
     console.log(setCreateDep);
   };
 
@@ -49,12 +47,10 @@ const Form = ({
         placeholder="DepartmentName"
       ></input>
       <button onClick={submitTodoHandler} className="" type="submit">
-        +
+        Submit
       </button>
-      <p>{dep}</p>
-      <List res={setRes} />
     </form>
   );
 };
 
-export default Form;
+export default FormDep;
