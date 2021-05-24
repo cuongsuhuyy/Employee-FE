@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import * as api from "../../api/index";
 import { Modal, Button } from "react-bootstrap";
 
@@ -9,6 +9,13 @@ const ListDep = (props) => {
 
   const [DepId, setDepId] = useState('');
   const [DepName, setDepName] = useState('');
+  const [updateText, setUpdateText] = useState({DepartmentId: 0, DepartmentName: ""});
+
+  useEffect(()=>{
+    console.log("updateText: ", updateText);
+
+    api.updateDepartments(updateText);
+  }, [updateText])
 
   const handleDelete = (item) => {
     const newsId = item.DepartmentId;
@@ -20,25 +27,16 @@ const ListDep = (props) => {
     handleShow();
     const editID = item.DepartmentId;
     const editName = item.DepartmentName;
-    console.log(editID);
+    // console.log("editID: ", editID);
+    // console.log("editName", editName);
     setDepId(editID);
     setDepName(editName);
-    props.DepId = {DepId}
-    console.log("setData: ", setDepId);
-    console.log("Data: ", DepId);
-    console.log("setData: ", setDepName);
-    console.log("Data: ", DepName);
   };
 
   const handleUpdate = (e) => {
     e.preventDefault();
-    // props.DepName(setDepName);
-    console.log("DepId: ", DepId);
-    props.aaa = [DepId];
-    // console.log(props.DepName);
-    // props.setUpdateDep = { DepartmentId: parseInt(DepId), DepartmentName: DepName };
-    api.updateDepartments(props.setUpdateDep)
-    // console.log(props.setUpdateDep);
+    setUpdateText({DepartmentId: parseInt(DepId), DepartmentName: DepName});
+    window.location.reload();
   }
 
   return (
@@ -56,13 +54,13 @@ const ListDep = (props) => {
               </Modal.Header>
               <Modal.Body>
                 <span>DepartmentId: </span>
-                <input defaultValue={props.DepId}
-                    onChange={()=>{}}></input>
+                <input defaultValue={DepId}
+                    onChange={(e)=>{setDepId(e.target.value)}}></input>
                 <br />
                 <br />
                 <span>DepartmentName: </span>
-                <input defaultValue={props.DepName}
-                  onChange={()=>{}}></input>
+                <input defaultValue={DepName}
+                  onChange={(e)=>{setDepName(e.target.value)}}></input>
               </Modal.Body>
               <Modal.Footer>
                 <Button variant="secondary" onClick={handleClose}>

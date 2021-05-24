@@ -24,6 +24,7 @@ function App() {
   const createText = (data) => {
     setResDep([...resDep, data]);
   };
+
   const deleteText = (data) => {
     console.log(data);
     setResDep(resDep.filter(item => item.DepartmentId !== data))
