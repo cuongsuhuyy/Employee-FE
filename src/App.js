@@ -5,6 +5,7 @@ import * as api from "./api/index";
 import ListDep from "./components/Department/ListDep";
 import ListEmp from "./components/Employee/ListEmp";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Counter } from "./features/counter/Counter";
 
 function App() {
   const [DepId, setDepId] = useState("");
@@ -47,6 +48,7 @@ function App() {
 
   return (
     <div>
+      <Counter />
       <FormDep
         DepId={DepId}
         setDepId={setDepId}

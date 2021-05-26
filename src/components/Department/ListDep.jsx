@@ -1,9 +1,18 @@
 import React, { useEffect, useState } from "react";
 import * as api from "../../api/index";
 import { Modal, Button } from "react-bootstrap";
+import reducerListDep from "../../reducers/reducerListDep";
+import { createStore } from "redux"; //import redux library
 
 const ListDep = (props) => {
+
+  //intialize state
+  const initialState = ('');
+  //create redux store
+  const store = createStore(reducerListDep, initialState); 
+
   const [show, setShow] = useState(false);
+  
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
@@ -33,9 +42,15 @@ const ListDep = (props) => {
     setDepName(editName);
   };
 
+  // const handleUpdate = (e) => {
+  //   e.preventDefault();
+  //   setUpdateText({DepartmentId: parseInt(DepId), DepartmentName: DepName});
+  //   window.location.reload();
+  // }
+
   const handleUpdate = (e) => {
     e.preventDefault();
-    setUpdateText({DepartmentId: parseInt(DepId), DepartmentName: DepName});
+    setUpdateText({DepartmentId: parseInt(store.getsta), DepartmentName: DepName});
     window.location.reload();
   }
 
