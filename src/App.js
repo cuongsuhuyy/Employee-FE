@@ -5,8 +5,16 @@ import * as api from "./api/index";
 import ListDep from "./components/Department/ListDep";
 import ListEmp from "./components/Employee/ListEmp";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import HelloWorld from "./HelloWorld.jsx";
+//import reducer
+import { createStore } from "redux";
+import reducer from "./reducer/reducers";
 
 function App() {
+
+  const initialState = "React";
+  const store = createStore(reducer, initialState);
+
   const [DepId, setDepId] = useState("");
   const [DepName, setDepName] = useState("");
 
@@ -65,6 +73,7 @@ function App() {
       <ListDep data={resDep}
                deleteText={deleteText} />
       <ListEmp data={resEmp} />
+      <HelloWorld />
     </div>
   );
 }
