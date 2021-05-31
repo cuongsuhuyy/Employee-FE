@@ -1,2 +1,6 @@
 export const GET_TEXT = "GET_TEXT";
 export const GET_TEXT_02 = "GET_TEXT_02";
+
+export const FETCH_EMPLOYEE = "FETCH_EMPLOYEE";
+export const FETCH_DEPARTMENT = "FETCH_DEPARTMENT";
+export const DELETE_EMPLOYEE = "DELETE_EMPLOYEE";

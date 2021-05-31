@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import * as api from "../../api/index";
 import { Modal, Button } from "react-bootstrap";
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 const ListDep = (props) => {
   const [show, setShow] = useState(false);

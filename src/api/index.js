@@ -13,3 +13,4 @@ export const updateDepartments = (updateDepartments) => axios.put(url + Dep, upd
 //Employee
 export const fetchEmployee = () => axios.get(url + Emp);
 export const createEmployee = (newEmp) => axios.post(url + Emp, newEmp);
+export const deleteEmployee = (id) => axios.delete(`${url + Emp}/${id}`);

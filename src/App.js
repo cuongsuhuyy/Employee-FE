@@ -41,12 +41,12 @@ function App() {
   };
 
   const [resEmp, setResEmp] = useState([]);
-  useEffect(() => {
-    api.fetchEmployee().then((res) => {
-      setResEmp(res.data);
-      console.log(res.data);
-    })
-  }, [])
+  // useEffect(() => {
+  //   api.fetchEmployee().then((res) => {
+  //     setResEmp(res.data);
+  //     console.log(res.data);
+  //   })
+  // }, [])
   const temp = (data) => {
     setResEmp([...resEmp, data])
     console.log("resEmp", resEmp);
@@ -79,3 +79,5 @@ function App() {
 }
 
 export default App;
+
+
